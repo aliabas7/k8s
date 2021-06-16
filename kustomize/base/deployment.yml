@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+
+spec:
+  replicas:  1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+              requests:
+                memory: 50
+              limits:
+                memory: 512
+        # env:
+        #   - name:  SECRET_USERNAME
+        #     valueFrom:
+        #       secretKeyRef:
+        #         name: ali
+        #         key: username
+        #   - name: MY_PASSWORD
+        #     valueFrom:
+        #       secretKeyRef:
+        #         name: ali
+        #         key: password
+
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 80
+      #   volumeMounts:
+      #   - name: myvolume
+      #     mountPath: "/etc/foo"
+      #     readOnly: true
+      # volumes:
+      # - name: myvolume
+      #   secret:
+      #     secretName: ali
