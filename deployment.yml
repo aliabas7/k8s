@@ -18,32 +18,8 @@ spec:
       containers:
       - name: nginx
         image: nginx
-        resources:
-              requests:
-                memory: 50
-              limits:
-                memory: 512
-        # env:
-        #   - name:  SECRET_USERNAME
-        #     valueFrom:
-        #       secretKeyRef:
-        #         name: ali
-        #         key: username
-        #   - name: MY_PASSWORD
-        #     valueFrom:
-        #       secretKeyRef:
-        #         name: ali
-        #         key: password
-
         securityContext:
           privileged: true
         ports:
         - containerPort: 80
-      #   volumeMounts:
-      #   - name: myvolume
-      #     mountPath: "/etc/foo"
-      #     readOnly: true
-      # volumes:
-      # - name: myvolume
-      #   secret:
-      #     secretName: ali
+      
