@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ngins
+        image: nginx
         securityContext:
           privileged: true
         ports:
